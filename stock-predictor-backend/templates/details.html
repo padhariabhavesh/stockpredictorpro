@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Details</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #eaf4f4; /* Light Cool Gray */
+            animation: fadeIn 1s ease-out;
+        }
+        .container {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease-out;
+        }
+        h1 {
+            color: #2c3e50; /* Dark Blue Gray */
+        }
+        .table {
+            color: #2c3e50; /* Dark Blue Gray for text */
+        }
+        .thead-dark {
+            background-color: #3498db; /* Bright Blue */
+            color: #ffffff; /* White text */
+        }
+        .btn-secondary {
+            background-color: #3498db; /* Bright Blue */
+            border-color: #2980b9; /* Darker Blue */
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #2980b9; /* Darker Blue */
+            border-color: #1f5680; /* Even Darker Blue */
+            transform: scale(1.05); /* Slightly larger */
+        }
+        .table tr:hover {
+            background-color: #f4f9fc; /* Light Blue Gray */
+            transition: background-color 0.3s;
+        }
+        a {
+            color: #3498db; /* Bright Blue for links */
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #2980b9; /* Darker Blue on hover */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Stock Details for {{ stock_details.longName }}</h1>
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Current Price</td>
+                        <td>{{ stock_details.currentPrice }}</td>
+                    </tr>
+                    <tr>
+                        <td>Previous Close</td>
+                        <td>{{ stock_details.previousClose }}</td>
+                    </tr>
+                    <tr>
+                        <td>Open</td>
+                        <td>{{ stock_details.open }}</td>
+                    </tr>
+                    <tr>
+                        <td>Day's Low</td>
+                        <td>{{ stock_details.dayLow }}</td>
+                    </tr>
+                    <tr>
+                        <td>Day's High</td>
+                        <td>{{ stock_details.dayHigh }}</td>
+                    </tr>
+                    <tr>
+                        <td>Volume</td>
+                        <td>{{ stock_details.volume }}</td>
+                    </tr>
+                    <tr>
+                        <td>Market Cap</td>
+                        <td>{{ stock_details.marketCap }}</td>
+                    </tr>
+                    <tr>
+                        <td>Beta</td>
+                        <td>{{ stock_details.beta }}</td>
+                    </tr>
+                    <tr>
+                        <td>PE Ratio</td>
+                        <td>{{ stock_details.peRatio }}</td>
+                    </tr>
+                    <tr>
+                        <td>EPS</td>
+                        <td>{{ stock_details.eps }}</td>
+                    </tr>
+                    <tr>
+                        <td>Earnings Date</td>
+                        <td>{{ stock_details.earningsDate }}</td>
+                    </tr>
+                    <tr>
+                        <td>Dividend Yield</td>
+                        <td>{{ stock_details.dividendYield }}</td>
+                    </tr>
+                    <tr>
+                        <td>Website</td>
+                        <td><a href="{{ stock_details.website }}" target="_blank">{{ stock_details.website }}</a></td>
+                    </tr>
+                    <tr>
+                        <td>Sector</td>
+                        <td>{{ stock_details.sector }}</td>
+                    </tr>
+                    <tr>
+                        <td>Industry</td>
+                        <td>{{ stock_details.industry }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/" class="btn btn-secondary mt-3">Go Back</a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

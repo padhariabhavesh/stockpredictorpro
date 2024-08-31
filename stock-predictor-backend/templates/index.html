@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Data Viewer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f0f8ff; /* Light Alice Blue */
+        }
+        .container {
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #2c3e50; /* Dark Blue Gray */
+        }
+        .btn-primary {
+            background-color: #3498db; /* Bright Blue */
+            border-color: #2980b9; /* Darker Blue */
+        }
+        .btn-primary:hover {
+            background-color: #2980b9; /* Darker Blue */
+            border-color: #1f5680; /* Even Darker Blue */
+        }
+        .form-control {
+            border-color: #3498db; /* Match form border with button color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h1 class="text-center mb-4">Search</h1>
+                <form action="/details" method="post">
+                    <div class="form-group">
+                        <label for="ticker">Ticker Symbol:</label>
+                        <input type="text" id="ticker" name="ticker" class="form-control" placeholder="Enter ticker symbol (e.g., TCS)" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Get Stock Details</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
