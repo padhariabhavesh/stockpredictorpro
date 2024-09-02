@@ -6,19 +6,14 @@ from keras.models import load_model
 import streamlit as st
 
 
-start = '2010-01-01'
-end = '2024-07-28'
+start = '01-01-2022'
+end = '31-12-2023'
 
 
 st.title('Stock Predictor Pro')
 
-user_input = st.text_input('Enter stock Ticker', 'AAPL')
+user_input = st.text_input('Enter stock Ticker', 'TTML')
 
 
 df = yf.download(user_input, start=start, end=end)
-
-# Describe the data
-st.subheader('Date from 2010-2024')
-st.write(df.describe())
-
 
