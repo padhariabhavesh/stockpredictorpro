@@ -1,33 +1,73 @@
 import matplotlib
 matplotlib.use('Agg')  # Use a non-GUI backend for Matplotlib
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import yfinance as yf
+from datetime import datetime
 
 app = Flask(__name__)
 
+# In-memory storage for users (replace this with a database in a real app)
+users = []
+
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('index.html')  # Stock search page
+
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        registration_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+        # Check if email already exists
+        if any(user['email'] == email for user in users):
+            return "Email already exists. Please log in."
+
+        # Add new user
+        users.append({'username': username, 'email': email, 'password': password, 'date': registration_date})
+        
+        # Redirect to login page after successful signup
+        return redirect(url_for('login'))
+
+    return render_template('signup.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        # Check if user exists
+        user = next((user for user in users if user['email'] == email and user['password'] == password), None)
+        if user:
+            return redirect(url_for('home'))
+        else:
+            return "Invalid email or password."
+
+    return render_template('login.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('admin.html', users=users)
+
 
 @app.route('/details', methods=['POST'])
 def details():
-    # Get user input from the form
     ticker = request.form['ticker']
 
-    # Append '.NS' suffix if needed for NSE stocks
     if not ticker.endswith('.NS'):
         ticker += '.NS'
 
     try:
-        # Fetch stock data
         stock = yf.Ticker(ticker)
         info = stock.info
 
         if not info:
             return "No data found for the ticker symbol. Please check the symbol and try again."
 
-        # Extract relevant details
         stock_details = {
             "longName": info.get("longName", "N/A"),
             "currentPrice": info.get("currentPrice", "N/A"),
