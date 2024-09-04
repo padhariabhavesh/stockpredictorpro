@@ -1,0 +1,119 @@
+/* Common Styles */
+body {
+    background-color: #f8f9fa; /* Light Gray */
+}
+
+.container {
+    background-color: #ffffff; /* White */
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1, h2 {
+    color: #2c3e50; /* Dark Blue Gray */
+}
+
+/* Admin Dashboard */
+.table {
+    background-color: #ffffff; /* White */
+}
+
+h2 {
+    color: #343a40; /* Dark Gray */
+}
+
+/* Stock Details Page */
+body {
+    background-color: #eaf4f4; /* Light Cool Gray */
+    animation: fadeIn 1s ease-out;
+}
+
+.table {
+    color: #2c3e50; /* Dark Blue Gray for text */
+}
+
+.thead-dark {
+    background-color: #3498db; /* Bright Blue */
+    color: #ffffff; /* White text */
+}
+
+.btn-secondary {
+    background-color: #3498db; /* Bright Blue */
+    border-color: #2980b9; /* Darker Blue */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-secondary:hover {
+    background-color: #2980b9; /* Darker Blue */
+    border-color: #1f5680; /* Even Darker Blue */
+    transform: scale(1.05); /* Slightly larger */
+}
+
+.table tr:hover {
+    background-color: #f4f9fc; /* Light Blue Gray */
+    transition: background-color 0.3s;
+}
+
+a {
+    color: #3498db; /* Bright Blue for links */
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #2980b9; /* Darker Blue on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Stock Data Viewer Page */
+body {
+    background-color: #f0f8ff; /* Light Alice Blue */
+}
+
+.btn-primary {
+    background-color: #3498db; /* Bright Blue */
+    border-color: #2980b9; /* Darker Blue */
+}
+
+.btn-primary:hover {
+    background-color: #2980b9; /* Darker Blue */
+    border-color: #1f5680; /* Even Darker Blue */
+}
+
+.form-control {
+    border-color: #3498db; /* Match form border with button color */
+}
+
+/* Sign Up Page */
+.signup-container {
+    max-width: 500px;
+    margin-top: 50px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #ffffff; /* White background for form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.signup-title {
+    color: #2c3e50; /* Dark Blue Gray */
+}

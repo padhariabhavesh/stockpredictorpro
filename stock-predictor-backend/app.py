@@ -1,7 +1,7 @@
 import matplotlib
 matplotlib.use('Agg')  # Use a non-GUI backend for Matplotlib
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, jsonify
 import yfinance as yf
 from datetime import datetime
 
@@ -53,7 +53,6 @@ def login():
 def admin():
     return render_template('admin.html', users=users)
 
-
 @app.route('/details', methods=['POST'])
 def details():
     ticker = request.form['ticker']
@@ -64,6 +63,7 @@ def details():
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
+        history = stock.history(period="1y")  # Fetch 1 year of historical data
 
         if not info:
             return "No data found for the ticker symbol. Please check the symbol and try again."
@@ -84,7 +84,8 @@ def details():
             "dividendYield": info.get("dividendYield", "N/A"),
             "website": info.get("website", "N/A"),
             "sector": info.get("sector", "N/A"),
-            "industry": info.get("industry", "N/A")
+            "industry": info.get("industry", "N/A"),
+            "history": history.reset_index().to_dict(orient='records')  # Convert history to dict
         }
 
         return render_template('details.html', stock_details=stock_details)
